@@ -1,0 +1,31 @@
+Cubey and Cannon · Sound credits
+
+Original audio by Kenney. All five source packs are licensed CC0 1.0 Universal, including commercial reuse. https://creativecommons.org/publicdomain/zero/1.0/
+
+rpg — https://kenney.nl/assets/rpg-audio
+impact — https://kenney.nl/assets/impact-sounds
+ui — https://kenney.nl/assets/ui-audio
+jingle — https://kenney.nl/assets/music-jingles
+blast — https://kenney.nl/assets/sci-fi-sounds
+
+Local adaptations are trimmed, pitch-adjusted, mixed, faded and normalized. Sources by output cue:
+
+ui.wav — ui/click3.ogg
+focus.wav — ui/rollover2.ogg
+coin.wav — rpg/handleCoins2.ogg, impact/impactMetal_light_002.ogg
+place.wav — impact/impactMining_001.ogg, impact/impactSoft_heavy_002.ogg
+shot.wav — blast/lowFrequency_explosion_000.ogg, impact/impactMetal_heavy_001.ogg
+hit.wav — impact/impactPunch_medium_001.ogg, impact/impactMetal_light_002.ogg
+hurt.wav — impact/impactPunch_heavy_003.ogg, rpg/dropLeather.ogg
+boss.wav — impact/impactMetal_heavy_004.ogg, jingle/jingles_HIT10.ogg
+powerup.wav — jingle/jingles_PIZZI03.ogg, rpg/handleCoins.ogg
+levelup.wav — jingle/jingles_STEEL07.ogg
+port.wav — jingle/jingles_SAX14.ogg
+campaign.wav — impact/impactBell_heavy_002.ogg, jingle/jingles_SAX06.ogg
+death.wav — impact/impactSoft_heavy_002.ogg, jingle/jingles_HIT04.ogg
+jump.wav — rpg/cloth2.ogg, impact/footstep_concrete_001.ogg
+swap.wav — rpg/clothBelt2.ogg, ui/switch11.ogg
+checkpoint.wav — impact/impactBell_heavy_002.ogg, ui/switch1.ogg
+break.wav — impact/impactPlank_medium_002.ogg, rpg/chop.ogg
+throw.wav — rpg/knifeSlice2.ogg
+land.wav — impact/footstep_wood_001.ogg

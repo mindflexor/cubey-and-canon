@@ -1,0 +1,172 @@
+Cubey and Cannon - additional audio (CC0 / public domain only)
+
+Every file below is CC0 1.0 (https://creativecommons.org/publicdomain/zero/1.0/)
+or US-government public domain. All are free for commercial use, and none requires
+attribution. Authors are listed as a courtesy.
+"Edited" means trimmed, faded, loop-crossfaded, peak-normalized and/or re-encoded to Ogg Vorbis.
+
+== AMBIENCE ==
+
+amb_ocean.ogg
+  Source:   https://opengameart.org/content/enemy-ship-approaching  (file oceanwaves.zip -> oceanwaves.ogg)
+  Author:   yd (OpenGameArt). The page says the ocean recording came from Freesound under CC0.
+  License:  CC0
+  Edited:   41-83 s excerpt, 2.5 s loop crossfade, about 39.5 s loop
+
+amb_gulls.ogg
+  Source:   https://commons.wikimedia.org/wiki/File:XC707075_-_European_Herring_Gull_-_Larus_argentatus.mp3
+            (same file: https://xeno-canto.org/707075)
+  Original: XC707075 - European Herring Gull - Larus argentatus.mp3
+  Author:   Sonotheque ADVL (field recording, Carolles, Normandy)
+  License:  CC0
+  Edited:   1.5-10.2 s excerpt with fades
+
+amb_jungle.ogg
+  Source:   https://npgallery.nps.gov/AssetDetail/933be1a0-3c11-4c46-a587-01edc50113f2
+  Original: rain_birds_HAVO005_20131002_171601.wav (rain and birdsong, Kahuku Rainforest, Hawai'i Volcanoes NP)
+  Author:   U.S. National Park Service, Natural Sounds and Night Skies Division
+  License:  Public domain (US federal government work)
+  Edited:   2 s loop crossfade, about 21 s loop
+
+amb_birds.ogg
+  Source:   https://opengameart.org/content/ambient-bird-sounds
+  Original: birds-isaiah658_0.ogg
+  Author:   isaiah658
+  License:  CC0
+  Edited:   2 s loop crossfade, about 27 s loop
+
+amb_beach_wind.ogg
+  Source:   https://opengameart.org/content/park-ambiences
+  Original: park_ambience_wind.wav (field recording, Adelaide park)
+  Author:   Thimras
+  License:  CC0
+  Edited:   2-48 s excerpt, 3 s loop crossfade, about 43 s loop
+
+== SFX ==
+
+cannon_fire.ogg
+  Source:   https://opengameart.org/content/tiny-naval-battle-sounds-set
+  Original: qubodup-NavalBattleSoundSet-cc0/ogg/GunShotGverb.ogg (made from public-domain US military recordings)
+  Author:   Iwan Gabovitch (qubodup)
+  License:  CC0
+
+explosion.ogg
+  Source:   https://opengameart.org/content/tiny-naval-battle-sounds-set
+  Original: qubodup-NavalBattleSoundSet-cc0/ogg/ExplosionMetalGverb.ogg
+            (based on https://freesound.org/people/qubodup/sounds/67474/ "m67_fragmentation_grenade_explosion_4", CC0)
+  Author:   Iwan Gabovitch (qubodup)
+  License:  CC0
+
+splash.ogg
+  Source:   https://opengameart.org/content/tiny-naval-battle-sounds-set
+  Original: qubodup-NavalBattleSoundSet-cc0/ogg/WaterSurfaceExplosion01.ogg
+  Author:   Iwan Gabovitch (qubodup)
+  License:  CC0
+
+wood_break.ogg
+  Source:   https://opengameart.org/content/35-wooden-crackshitsdestructions
+  Original: wood_impact/impactwood10.mp3.flac
+  Author:   Independent.nu
+  License:  CC0
+  Edited:   silence trimmed, fade-out, normalized
+
+stone_place.ogg
+  Source:   https://opengameart.org/content/moving-boulder
+  Original: boulder_drop_0.ogg (made from Freesound CC0 recordings: magnuswaker "Concrete SMASH 2" #522099
+            and IDLauncher "Boulder Push" #513236)
+  Author:   themightyglider
+  License:  CC0
+
+step_sand.ogg
+  Source:   https://opengameart.org/content/water-splash-and-sand-footsteps
+  Original: sand_footsteps_0.mp3 (one step cut out at 3.20-3.72 s)
+  Author:   Peludo
+  License:  CC0
+
+step_wood.ogg
+  Source:   https://kenney.nl/assets/impact-sounds
+  Original: Audio/footstep_wood_000.ogg
+  Author:   Kenney (kenney.nl)
+  License:  CC0
+
+step_stone.ogg
+  Source:   https://kenney.nl/assets/impact-sounds
+  Original: Audio/footstep_concrete_000.ogg
+  Author:   Kenney (kenney.nl)
+  License:  CC0
+
+metal_clang.ogg
+  Source:   https://kenney.nl/assets/impact-sounds
+  Original: Audio/impactMetal_heavy_001.ogg
+  Author:   Kenney (kenney.nl)
+  License:  CC0
+
+orc_grunt.ogg
+  Source:   https://opengameart.org/content/16-monster-growls
+  Original: monster_-_starninjas.zip -> monster.2.ogg (vocal recording)
+  Author:   StarNinjas
+  License:  CC0
+
+orc_die.ogg
+  Source:   https://opengameart.org/content/16-monster-growls
+  Original: monster_-_starninjas.zip -> monster.8.ogg
+  Author:   StarNinjas
+  License:  CC0
+  Edited:   normalized
+
+gear_pickup.ogg
+  Source:   https://kenney.nl/assets/rpg-audio
+  Original: Audio/handleCoins.ogg
+  Author:   Kenney (kenney.nl)
+  License:  CC0
+  Edited:   normalized
+
+switch.ogg
+  Source:   https://kenney.nl/assets/rpg-audio
+  Original: Audio/metalLatch.ogg
+  Author:   Kenney (kenney.nl)
+  License:  CC0
+  Edited:   normalized
+
+chest_open.ogg
+  Source:   https://kenney.nl/assets/rpg-audio
+  Original: Audio/doorOpen_1.ogg (creaky wooden opening)
+  Author:   Kenney (kenney.nl)
+  License:  CC0
+  Edited:   normalized
+
+== MUSIC ==
+
+music_menu.ogg
+  Source:   https://opengameart.org/content/pirate-adventure
+  Original: pirate_adventure.wav
+  Author:   Eldritch Grim
+  License:  CC0
+  Edited:   re-encoded to Ogg, normalized to -1 dBFS
+
+music_explore.ogg
+  Source:   https://opengameart.org/content/feel-good-island
+  Original: island_0.ogg
+  Author:   HaelDB
+  License:  CC0 (the page offers OGA-BY 3.0 OR CC0; this file is used under CC0)
+  Edited:   none (copied as-is)
+
+music_combat.ogg
+  Source:   https://opengameart.org/content/determined-pursuit-epic-orchestra-loop
+  Original: determined_pursuit_loop.wav (loopable)
+  Author:   Emma_MA
+  License:  CC0
+  Edited:   re-encoded to Ogg
+
+music_boss.ogg
+  Source:   https://opengameart.org/content/boss-battle-music
+  Original: Juhani Junkala - Epic Boss Battle [Seamlessly Looping].wav
+  Author:   Juhani Junkala (SubspaceAudio)
+  License:  CC0
+  Edited:   re-encoded to Ogg, normalized to -1 dBFS
+
+music_victory.ogg
+  Source:   https://kenney.nl/assets/music-jingles
+  Original: Audio/Steel jingles/jingles_STEEL10.ogg (rising steel-drum jingle)
+  Author:   Kenney (kenney.nl)
+  License:  CC0

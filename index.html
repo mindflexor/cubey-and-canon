@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes">
+<title>Cubey & Canon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Nunito:wght@600;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./src/styles.css">
+</head>
+<body>
+<canvas id="view"></canvas>
+
+<div id="hud" hidden>
+  <div id="vitals" class="vitals">
+    <div id="portrait" class="portrait cubey"><span></span></div>
+    <div class="vit-body">
+      <div class="vit-top"><b id="hero-name">Cubey</b><span id="partner" class="partner">Q · Canon</span></div>
+      <div id="pips" class="pips"></div>
+    </div>
+  </div>
+  <div class="counters">
+    <div id="gear-box" class="counter"><span id="gear-icon" class="gicon"></span><b id="gears">0</b></div>
+    <div class="counter gold"><span id="gold-icon" class="gicon"></span><b id="gold">0/3</b></div>
+    <div id="cube-count" class="counter cubes"><span class="cicon"></span><b><span id="cubes">0</span>/4</b></div>
+  </div>
+  <div id="objective" class="objective"></div>
+  <div id="reticle"><i></i><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="17"/></svg></div>
+  <div id="toast" class="toast"></div>
+  <div id="banner" class="banner"><div id="banner-title"></div><div id="banner-sub"></div></div>
+  <div id="hint" class="hint"></div>
+  <div id="abil" class="abil"></div>
+  <div id="boss" class="boss" hidden><span id="boss-name"></span><div class="bar"><i id="boss-fill"></i></div></div>
+</div>
+<div id="fade"></div>
+<div id="lockhint" hidden>Click the game to capture the mouse</div>
+
+<div id="menu" class="menu">
+  <div class="menu-card">
+    <div class="logo"><span class="l1">Cubey</span><span class="amp">&amp;</span><span class="l2">Canon</span></div>
+    <p id="menu-sub" class="sub">Saltgear Harbor</p>
+    <div id="loading" class="loading"><div class="lbar"><i id="lfill"></i></div><span id="ltext">Pouring cement…</span></div>
+    <div id="buttons" class="buttons" hidden></div>
+    <div id="controls" class="controls" hidden>
+      <dl>
+        <dt>Move / Look</dt><dd>WASD · Mouse</dd>
+        <dt>Jump / Double jump</dt><dd>Space (twice)</dd>
+        <dt>Swap hero</dt><dd>Q or Tab</dd>
+        <dt>Cubey</dt><dd>Click: place cube · Right mouse: cube shield · Click in air: slam · R: recall cubes</dd>
+        <dt>Canon</dt><dd>Click: fire · Hold click: heavy shot · Right mouse: aim</dd>
+        <dt>Pause</dt><dd>Esc</dd>
+        <dt>Xbox controller</dt><dd>LS move · RS look · A jump · RT/RB place cube or fire (hold RT to charge) · LT/LB shield or aim · Y swap · X recall · Menu pause · D-pad + A in menus</dd>
+        <dt>Touchscreen</dt><dd>Left thumb: move · drag right side: look · ▲ jump · ● place/fire (hold to charge) · ◈ shield/aim · ⇄ swap · ↺ recall</dd>
+      </dl>
+    </div>
+  </div>
+</div>
+<div id="fault" hidden></div>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
