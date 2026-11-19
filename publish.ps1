@@ -55,33 +55,51 @@ Write-Host "Using: $SourcePath" -ForegroundColor Green
 
 $work = Join-Path $env:TEMP ("cubey-github-" + [guid]::NewGuid().ToString("N"))
 $checkout = Join-Path $work "repo"
-$unzip = Join-Path $work "unzipped"
 New-Item -ItemType Directory -Force -Path $work | Out-Null
-
-if (Test-Path -LiteralPath $SourcePath -PathType Leaf) {
-  New-Item -ItemType Directory -Force -Path $unzip | Out-Null
-  Write-Host "Extracting game..." -ForegroundColor Cyan
-  Expand-Archive -LiteralPath $SourcePath -DestinationPath $unzip -Force
-  $project = Join-Path $unzip "Cubey & Canon"
-  if (-not (Test-Path -LiteralPath (Join-Path $project "package.json"))) {
-    $project = $unzip
-  }
-} else {
-  $project = $SourcePath
-}
-
-foreach ($item in @("index.html", "package.json", "package-lock.json", "src", "public")) {
-  if (-not (Test-Path -LiteralPath (Join-Path $project $item))) {
-    throw "Missing $item inside game folder $project. Select the original complete game ZIP."
-  }
-}
 
 Write-Host "Cloning your GitHub repository..." -ForegroundColor Cyan
 & git clone $repoURL $checkout
 if ($LASTEXITCODE -ne 0) { throw "Git clone failed." }
+
+# Only extract the five game inputs. Windows PowerShell 5.1 Expand-Archive
+# can fail when ZIPs contain extraneous hidden folders such as .claude.
+# Streaming selected ZIP entries avoids that bug and skips node_modules/dist.
+Add-Type -AssemblyName System.IO.Compression
+Add-Type -AssemblyName System.IO.Compression.FileSystem
+$prefix = "Cubey & Canon/"
+$count = 0
+Write-Host "Extracting only src/, public/, index.html and package files..." -ForegroundColor Cyan
+$zip = [System.IO.Compression.ZipFile]::OpenRead($SourcePath)
+try {
+  foreach ($entry in $zip.Entries) {
+    $fullName = $entry.FullName.Replace('\', '/')
+    if (-not $fullName.StartsWith($prefix, [StringComparison]::OrdinalIgnoreCase)) { continue }
+    $relative = $fullName.Substring($prefix.Length)
+    $wanted = ($relative -in @("index.html", "package.json", "package-lock.json")) -or
+              $relative.StartsWith("src/") -or $relative.StartsWith("public/")
+    if (-not $wanted -or [string]::IsNullOrEmpty($entry.Name)) { continue }
+    if ($relative -match '(^|/)\.\.(/|$)') { throw "Invalid entry in ZIP: $relative" }
+
+    $target = Join-Path $checkout ($relative.Replace('/', '\'))
+    $directory = Split-Path -Parent $target
+    [System.IO.Directory]::CreateDirectory($directory) | Out-Null
+    $inputStream = $entry.Open()
+    try {
+      $outputStream = [System.IO.File]::Create($target)
+      try { $inputStream.CopyTo($outputStream) }
+      finally { $outputStream.Dispose() }
+    } finally { $inputStream.Dispose() }
+    $count++
+  }
+} finally { $zip.Dispose() }
+Write-Host "Extracted $count game files." -ForegroundColor Green
+
 foreach ($item in @("index.html", "package.json", "package-lock.json", "src", "public")) {
-  Copy-Item -LiteralPath (Join-Path $project $item) -Destination (Join-Path $checkout $item) -Recurse -Force
+  if (-not (Test-Path -LiteralPath (Join-Path $checkout $item))) {
+    throw "The ZIP is missing required game content: $item. Confirm you selected the original complete ZIP."
+  }
 }
+
 & git -C $checkout add index.html package.json package-lock.json src public
 if ($LASTEXITCODE -ne 0) { throw "Git staging failed." }
 
