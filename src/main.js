@@ -1,5 +1,6 @@
 import { initMaterials } from './materials.js';
 import { createRenderer } from './render.js';
+import { showDisplayActions } from './display.js';
 import { Input } from './input.js';
 import { Audio } from './audio.js';
 import { HUD } from './hud.js';
@@ -25,9 +26,33 @@ function buttons(list) {
     b.append(el);
   }
 }
+function menuButtons() {
+  return [...$('menu').querySelectorAll('.buttons:not([hidden]) button:not([hidden])')];
+}
+
+function moveFocus(buttons, direction) {
+  const index = buttons.indexOf(document.activeElement);
+  buttons[index < 0 ? 0 : (index + direction + buttons.length) % buttons.length].focus();
+}
+
+// TV remotes send keyboard events. Activate during the key gesture for browser permissions.
+addEventListener('keydown', event => {
+  if (mode === 'play' || mode === 'loading') return;
+  const items = menuButtons();
+  if (!items.length) return;
+  if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+    event.preventDefault();
+    moveFocus(items, event.key === 'ArrowDown' ? 1 : -1);
+  } else if (event.key === 'Enter' || event.key === 'Select' || event.keyCode === 23) {
+    event.preventDefault();
+    if (!event.repeat) (items.includes(document.activeElement) ? document.activeElement : items[0]).click();
+  }
+});
+
 function showMenu(kind) {
   mode = kind; document.body.classList.remove('playing'); $('menu').style.display = ''; $('menu').classList.remove('hidden'); hud.show(kind === 'paused'); input.unlock();
   $('controls').hidden = true;
+  showDisplayActions(kind === 'title' || kind === 'paused');
   if (kind === 'title') {
     $('menu-sub').textContent = `Level ${LEVEL} · ${LV.name}`;
     buttons([[LEVEL === 1 && save.unlocked === 1 ? 'Set Sail' : `Play Level ${LEVEL}`, start], ['Level Select', () => showMenu('levels'), true], ['Controls', () => { $('controls').hidden = !$('controls').hidden; }, true]]);
@@ -50,6 +75,7 @@ function showMenu(kind) {
 }
 function start() {
   audio.wake().then(() => audio.setMusic('explore'));
+  showDisplayActions(false);
   mode = 'play'; document.body.classList.add('playing'); $('menu').classList.add('hidden'); setTimeout(() => { if (mode === 'play') $('menu').style.display = 'none'; }, 450); $('buttons').hidden = true; hud.show(true); if (params.has('nolock')) { input.wantLock = true; input.lockFailed = true; } else input.lock();
   hud.swap(G.active); G.cam.snap = true; last = performance.now();
   if (!G.started) { G.started = true; G.hud.banner(`Level ${LEVEL}: ${LV.name}`, LV.tag); }
@@ -100,11 +126,10 @@ function loop(now) {
     else G.update(dt, inp);
   } else {
     // controller / keyboard menu navigation
-    const btns = [...$('buttons').querySelectorAll('button')];
+    const btns = menuButtons();
     if (btns.length && !$('buttons').hidden) {
-      let i = btns.indexOf(document.activeElement);
-      if (inp.navDown || inp.navUp) { i = i < 0 ? 0 : (i + (inp.navDown ? 1 : -1) + btns.length) % btns.length; btns[i].focus(); audio.play('focus', { vol: 0.3 }); }
-      if (inp.confirm && mode !== 'title') { (btns[i] || btns[0]).click(); }
+      if (inp.navDown || inp.navUp) { moveFocus(btns, inp.navDown ? 1 : -1); audio.play('focus', { vol: 0.3 }); }
+      if (inp.confirm) (btns.includes(document.activeElement) ? document.activeElement : btns[0]).click();
       if (inp.pause && mode === 'paused') resume();
     }
     menuT += dt;
@@ -116,7 +141,6 @@ function loop(now) {
       G.time += dt; for (const h of G.heroes) h.animate(dt); G.fx.update(dt); for (const u of G.updaters) u(dt, G);
       for (const e of G.enemies) if (!e.dead) e.anim?.(dt, 0);
     }
-    if (inp.confirm && mode === 'title') { const b = [...$('buttons').querySelectorAll('button')]; const f = b.indexOf(document.activeElement); if (f > 0) b[f].click(); else start(); }
   }
   R.update(dt, G.active.pos, G.time);
   R.render();

@@ -102,6 +102,14 @@ b { font-weight: 900; }
 #reticle:not(.mini)::before { opacity: .0; }
 body.playing #view { cursor: none; }
 
+#display-actions { margin-top: 12px; }
+.buttons[hidden], .buttons button[hidden] { display: none; }
+#display-note { margin: 4px auto 0; max-width: 34em; padding: 10px 14px; background: #16202e; border-radius: 10px; }
+#display-note:empty { display: none; }
+.buttons button:focus { outline: 3px solid var(--gold); outline-offset: 3px; }
+.menu-card { max-width: 100%; max-height: 100%; overflow-y: auto; touch-action: pan-y; }
+.menu { grid-template-rows: minmax(0, 1fr); padding: 8px; padding: max(8px, env(safe-area-inset-top)) max(8px, env(safe-area-inset-right)) max(8px, env(safe-area-inset-bottom)) max(8px, env(safe-area-inset-left)); }
+
 /* ---------------- touch controls */
 #touch { display: none; position: fixed; inset: 0; pointer-events: none; z-index: 5; }
 body.touch.playing #touch { display: block; }
@@ -129,7 +137,7 @@ body.touch .hint { bottom: 140px; max-width: 60vw; font-size: 14px; }
   .t-pause { top: calc(56px + env(safe-area-inset-top)); }
   #banner-title { font-size: 38px; } #banner-sub { font-size: 15px; }
   .logo { font-size: 54px; } .sub { margin: 10px 0 16px; font-size: 14px; } .buttons button { min-width: 220px; padding: 10px 20px; font-size: 20px; }
-  .controls dl { font-size: 12px; } .menu-card { padding: 10px; max-height: 100vh; overflow: auto; }
+  .controls dl { font-size: 12px; } .menu-card { padding: 10px; }
   .boss { bottom: 12px; } .boss span { font-size: 16px; }
 }
 

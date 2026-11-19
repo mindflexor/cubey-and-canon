@@ -7,7 +7,7 @@ export class Input {
     this.locked = false; this.sens = 0.0022; this.invertY = false;
     this.padPrev = {}; this.kind = 'keys';
     addEventListener('keydown', e => {
-      if (e.code === 'Tab') e.preventDefault();
+      if (e.code === 'Tab' && this.wantLock) e.preventDefault();
       if (!this.keys.has(e.code)) this.pressed.add(e.code);
       this.keys.add(e.code); this.kind = 'keys';
     });
@@ -69,7 +69,7 @@ export class Input {
       primary: this.mouse.p0 || p('KeyE'), primaryHeld: this.mouse.b0 || k('KeyE'), primaryUp: this.mouse.r0 || (this.pressedUp?.has('KeyE') ?? false),
       secondaryHeld: this.mouse.b2 || k('KeyF') || k('ShiftLeft'),
       swap: p('KeyQ') || p('Tab'), recall: p('KeyR'), pause: p('Escape') || p('KeyP'),
-      confirm: p('Enter'),
+      confirm: false,
     };
     if (!this.locked && this.wantLock && this.mx != null) { const ex = this.mx < 0.03 ? -1 : this.mx > 0.97 ? 1 : 0; s.lookX += ex * 2.2 * dt; }
     if (this._eHeld && !k('KeyE')) s.primaryUp = true;
